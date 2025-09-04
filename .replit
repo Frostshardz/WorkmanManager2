@@ -13,8 +13,16 @@ runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
-mode = "parallel"
+mode = "sequential"
 author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 -m ensurepip --upgrade"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 -m pip install flask flask-sqlalchemy flask-login flask-wtf wtforms email-validator psycopg2-binary gunicorn werkzeug"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
